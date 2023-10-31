@@ -103,25 +103,29 @@ class Receipt:
         like_to_order = 'y'
         while like_to_order == 'y':
             ice_cream = Ice_cream()
-            try:
-                print("What flavor of ice cream would you like to order?")
-                print("Your options are: Vanilla, Strawberry, Chocolate.")
-                user_flavor = input().strip().lower()
-                ice_cream.set_flavor(user_flavor)
-            except ValueError:
-                print("Please put in a valid ice cream flavor.")
+            print("What flavor of ice cream would you like to order?")
+            print("Your options are: Vanilla, Strawberry, Chocolate.")
+            while True:
+                try:
+                    user_flavor = input().strip().lower()
+                    ice_cream.set_flavor(user_flavor)
+                    break
+                except ValueError:
+                    print("Please put in a valid ice cream flavor.")
             print("Would you like the deluxe brand? (Yes/No)")
             deluxe_choice = input().strip().lower()
             while deluxe_choice != 'yes' and deluxe_choice != 'no':
                 print("Please input Yes or No!")
                 deluxe_choice = input().strip().lower()
             ice_cream.set_choice(deluxe_choice == "yes")
-            try: 
-                print("How many scoops would you like to order?")
-                user_scoops = int(input())
-                ice_cream.set_num_scoops(user_scoops)
-            except ValueError:
-                print("Please enter a number greater than 0")
+            print("How many scoops would you like to order?")
+            while True:
+                try: 
+                    user_scoops = int(input())
+                    ice_cream.set_num_scoops(user_scoops)
+                    break
+                except ValueError:
+                    print("Please enter a number greater than 0")
             print("Which toppings would you like? Enter done if you do not want any.")
             print("Your options are: sprinkles, gummy bears, oreos.")
             toppings_temps = []
