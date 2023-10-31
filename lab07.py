@@ -136,7 +136,7 @@ class Receipt:
                 elif topping_type in ["sprinkles","gummy bears","oreos"]:
                     topping = Topping(topping_type)
                     toppings_temps.append(topping)
-                    print(f"Toppings {topping.get_type()} added for ${topping.get_cost():.2f}")
+                    print(f"Topping {topping.get_type()} added for ${topping.get_cost():.2f}")
                     print("Enter done if you are done selecting toppings, or enter another topping.")
                 else:
                     print("Please put in a valid topping type.")
@@ -153,7 +153,6 @@ class Receipt:
                 continue
             elif new_order == 'no':
                 like_to_order = 'n'
-            print("Your order:")
             print(rec.print_receipt())
     
 if __name__ == "__main__":
