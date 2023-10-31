@@ -1,4 +1,16 @@
+"""
+Author:         Landon Thomas
+Date:           10/31/23
+Assignment:     Lab 07
+Course:         CPSC1051
+Lab Section:    004
 
+CODE DESCRIPTION:
+This program models an ice cream shop, taking the flavor, toppings, number of scoops, deluxe brand, and
+price into account. It will then print out the customer's receipt after each order and ask if
+the user would like to add another ice cream or not.
+"""
+#define Ice cream class and its attributes
 class Ice_cream:
     def __init__(self):
         self.toppings = []
@@ -6,6 +18,7 @@ class Ice_cream:
         self.num_scoops = 1
         self.price = 0
         self.flavor = ''
+    #get each Ice cream's attributes
     def get_flavor(self):
         return self.flavor
     def get_num_scoops(self):
@@ -14,6 +27,7 @@ class Ice_cream:
         return self.choice
     def get_toppings(self):
         return self.toppings
+    #set each ice cream's attributes
     def set_flavor(self, flavor):
         if flavor.lower() not in ['vanilla','chocolate','strawberry']:
             raise ValueError("Please put in a valid ice cream flavor.")
@@ -33,6 +47,7 @@ class Ice_cream:
         self.deluxe = deluxe
     def set_toppings(self,toppings):
         self.toppings = toppings
+    #calculate the cost
     def calc_total(self):
         total = self.price
         if self.deluxe:
@@ -40,6 +55,7 @@ class Ice_cream:
         for topping in self.toppings:
             total += topping.get_cost()
         return total
+    #display info about the ice cream
     def ice_cream_info(self):
         info = f"\nFlavor: {self.flavor}"
         info += f"\nScoops: {self.num_scoops}"
@@ -52,7 +68,7 @@ class Ice_cream:
         info += f"\nTotal: ${self.calc_total():.2f}\n"
         return info
 
-
+#define topping class and attributes
 class Topping:
     def __init__(self,type):
         self.type = type.lower()
@@ -72,7 +88,7 @@ class Topping:
     
 
         
-
+#define receipt class and its attributes to print the customer's receipt
 class Receipt:
     def __init__(self):
         self.ice_creams = []
@@ -94,6 +110,7 @@ class Receipt:
             str_total += (i.ice_cream_info())
         str_total += (f"Final Total: ${self.calc_total():.2f}")
         return str_total
+    #main class to run the actual code
     def main():
         rec = Receipt()
         print("Welcome to Adkins' Scoop City!")
@@ -154,7 +171,7 @@ class Receipt:
             elif new_order == 'no':
                 like_to_order = 'n'
             print(rec.print_receipt())
-    
+#run main code   
 if __name__ == "__main__":
     Receipt.main()
 
