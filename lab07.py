@@ -76,22 +76,20 @@ class Topping:
 class Receipt:
     def __init__(self):
         self.ice_creams = []
-        self.name = ''
+        self.name = ""
     def add(self,ice_cream):
         self.ice_creams.append(ice_cream)
-    def set_name(self, name):
-        self.name = name.lower()
-    def get_name(self):
-        return self.name
     def calc_total(self):
         total = 0
         for i in self.ice_creams:
             total += i.calc_total()
         return total
+    def set_name(self, name):
+        self.name = name
     def print_receipt(self):
         str_total = ""
         str_total += "\nAdkins' Scoop City Receipt"
-        str_total += f"\nCustomer name:"
+        str_total +=f"\nCustomer Name: {self.name}"
         for i in self.ice_creams:
             str_total += (i.ice_cream_info())
         str_total += (f"Final Total: ${self.calc_total():.2f}")
@@ -100,7 +98,8 @@ class Receipt:
         rec = Receipt()
         print("Welcome to Adkins' Scoop City!")
         print("What is your name?")
-        user_name = input()
+        user_name = input().strip()
+        rec.set_name(user_name)
         like_to_order = 'y'
         while like_to_order == 'y':
             ice_cream = Ice_cream()
