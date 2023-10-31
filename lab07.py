@@ -148,6 +148,7 @@ class Receipt:
             new_order = input().strip().lower()
             while new_order != 'yes' and new_order != 'no':
                 print("Please input Yes or No!")
+                new_order = input().strip().lower()
             if new_order == 'yes':
                 continue
             elif new_order == 'no':
